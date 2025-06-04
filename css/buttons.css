@@ -1,0 +1,41 @@
+.btn-top-right {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 24px;
+  border: 2px solid white;
+  border-radius: 8px;
+  background-color: transparent;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Press Start 2P','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
+  z-index: 9999;
+}
+
+.btn-top-right:hover,
+.btn-top-right:focus {
+  background-color: white;
+  color: #222;
+  outline: none;
+}
+
+.btn-entrar {
+  background-color: #2ecc71;
+  color: black;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Press Start 2P', sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.btn-entrar:hover {
+  background-color: #27ae60;
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <link rel="icon" href="imagens/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="css/styleTartaruga.css" />
+
+  <title>Extinção Zero</title>
+  <style>#popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border: 3px solid #0099cc;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      text-align: center;
+      max-width: 90%;
+      z-index: 1000;
+    }
+
+    #popup h2 {
+      margin-top: 0;
+    }
+
+    #popup button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background-color: #00cc88;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      font-family: 'Press Start 2P', monospace;
+    }
+
+    #popup button:hover {
+      background-color: #009966;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="popup">
+    <h2>🌊 Salve a tartaruga-de-couro!</h2>
+    <p>
+      ▶ Desvie das sacolas e redes!<br>
+      ▶ Colete águas-vivas para ganhar vida ❤️ ou escudo 🛡️.<br>
+      ▶ Use as setas ⬅️➡️⬆️⬇️ para se mover.<br>
+      ▶ Sobreviva por 60 segundos!<br><br>
+    </p>
+    <button id="startBtn">Jogar</button>
+  </div>
+
+  <div id="info">Vidas: ❤️❤️❤️ | Tempo: <span id="time"></span></div>
+  <canvas id="game"></canvas>
+  <div id="message"></div>
+
+    <audio id="collisionSound" src="audios/dano.mp3" preload="auto"></audio>
+
+  <!-- Áudio para pegar coração -->
+  <audio id="heartSound" src="audios/ganhar-coração.mp3" preload="auto"></audio>
+
+  <audio id="winSound" src="audios/ganhar.mp3" preload="auto"></audio>
+  <audio id="loseSound" src="audios/perder.mp3" preload="auto"></audio>
+  <audio id="bgMusic" src="audios/musica-fundo.mp3" preload="auto" loop></audio>
+  <audio id="moveSound" src="audios/som-movimento.mp3" preload="auto"></audio>
+
+  <img id="imgSacola" src="imagens/sacola.png" style="display:none;">
+  <img id="imgTartaruga" src="imagens/tartaruga-de-couro.png" style="display:none;">
+  <img id="imgAguaViva" src="imagens/agua-viva.png" style="display:none;">
+  <img id="imgRede" src="imagens/rede.png" style="display:none;">
+
+  <!-- Popup perder -->
+  <div class="popup-overlay" id="popupLose">
+    <div class="popup-content">
+      <div class="popup-title">Você perdeu!</div>
+      <img src="imagens/caveira.webp" class="popup-skull" alt="Caveira" />
+      <img src="imagens/tartaruga-de-couro-triste.png" class="popup-turtle" alt="Tartaruga Triste" />
+      <div class="popup-buttons">
+        <button class="popup-btn recomecar" onclick="location.reload()">
+          <img src="imagens/botao-recomecar.webp" alt="Reiniciar" style="height: 48px;" />
+        </button>
+        <button class="popup-btn" onclick="window.location.href='index-mata-atlantica.html'">
+          <img src="imagens/botao-home.webp" alt="Início" style="height: 48px;" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup ganhar -->
+  <div class="popup-overlay" id="popupWin">
+    <div class="popup-content popup-win-content">
+      <div class="popup-title">Você venceu!</div>
+      <img src="imagens/trofeu.webp" class="popup-star" alt="Estrela" />
+      <img src="imagens/tartaruga-de-couro-feliz.png" class="popup-turtle" alt="Tartaruga Feliz" />
+      <div class="popup-buttons">
+        <button class="popup-btn recomecar" onclick="location.reload()">
+          <img src="imagens/botao-recomecar.webp" alt="Reiniciar" style="height: 48px;" />
+        </button>
+        <button class="popup-btn" onclick="desbloquearTartaruga()">
+          
+<script>
+function desbloquearTartaruga() {
+    localStorage.setItem('tartarugaDesbloqueada', 'true');
+    window.location.href = 'index-mata-atlantica.html';
+}
+</script>
+          <img src="imagens/botao-home.webp" alt="Início" style="height: 48px;" />
+        </button>
+        <button class="popup-btn" onclick="window.location.href='fase2.html'">
+          <img src="imagens/botao-avancar.webp" alt="Próxima Fase" style="height: 48px;" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/scriptTartaruga1.js"></script>
+</body>
+</html>

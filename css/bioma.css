@@ -1,0 +1,70 @@
+#biomaContainer {
+  position: relative;
+  width: 750px;
+  height: auto;
+  box-sizing: border-box;
+}
+
+#mapaAmericaSul {
+    position: absolute;
+    top: -126px;
+    left: -98px;
+    transform: scale(0.275);
+    transform-origin: left top;
+    z-index: 10;
+}
+
+#mapaBiomas {
+  position: absolute;
+  top: 20px;
+  left: 50px;
+  width: 750px;
+  height: auto;
+  z-index: 10;
+}
+
+#canvasColorDetect {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+.bioma-info {
+  position: fixed;
+  top: 20%;
+  right: 5%;
+  width: 340px;
+  max-height: 75vh;
+  overflow-y: auto;
+  background: rgba(5, 20, 40, 0.85);
+  border-radius: 12px;
+  padding: 20px;
+  color: white;
+  font-family: 'Press Start 2P', sans-serif;
+  z-index: 10000;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.bioma-info.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.bioma-header img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.bioma-header h2,
+.bioma-description,
+.bioma-content,
+.bioma-footer {
+  font-size: 10px;
+}

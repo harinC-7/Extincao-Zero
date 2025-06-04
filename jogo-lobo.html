@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Extinção Zero</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+  <link rel="icon" href="imagens/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="css/styleLobo.css" />
+  <style>#popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border: 3px solid rgb(132, 71, 14);;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      text-align: center;
+      max-width: 90%;
+      z-index: 1000;
+    }
+
+    #popup h2 {
+      margin-top: 0;
+    }
+
+    #popup button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background-color: #00cc88;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      font-family: 'Press Start 2P', monospace;
+    }
+
+    #popup button:hover {
+      background-color: #009966;
+    }
+  </style>
+</head>
+<body>
+  <audio id="loboSound" src="audios/lobo.mp3"></audio>
+
+  <div id="popup">
+    <h2>🔥 Salve o lobo-guará!</h2>
+    <p>
+      ▶ Apague os 15 fogos antes que o tempo acabe!<br>
+    </p>
+    <button id="startBtn">Jogar</button>
+  </div>
+
+  <div id="info">
+    Tempo: <span id="time">5</span>s | Fogos apagados: <span id="firesDone">0</span>/15
+  </div>
+  <canvas id="canvas"></canvas>
+  <div id="message"></div>
+
+  <!-- Popup perder -->
+  <div class="popup-overlay" id="popupLose">
+    <div class="popup-content">
+      <div class="popup-title">Você perdeu!</div>
+      <img src="imagens/caveira.webp" class="popup-skull" alt="Caveira" />
+      <img src="imagens/lobo-guara-triste.png" class="popup-turtle" alt="Tartaruga Triste" />
+      <div class="popup-buttons">
+        <button class="popup-btn" onclick="location.reload()">
+          <img src="imagens/botao-recomecar.webp" alt="Reiniciar" style="height: 48px;" />
+        </button>
+        <button class="popup-btn" onclick="window.location.href='index-cerrado.html'">
+          <img src="imagens/botao-home.webp" alt="Início" style="height: 48px;" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup ganhar -->
+  <div class="popup-overlay" id="popupWin">
+    <div class="popup-content popup-win-content">
+      <div class="popup-title">Você venceu!</div>
+      <img src="imagens/trofeu.webp" class="popup-star" alt="Estrela" />
+      <img src="imagens/lobo-guara-feliz.png" class="popup-turtle" alt="Tartaruga Feliz" />
+      <div class="popup-buttons">
+        <button class="popup-btn" onclick="location.reload()">
+          <img src="imagens/botao-recomecar.webp" alt="Reiniciar" style="height: 48px;" />
+        </button>
+        <button class="popup-btn" onclick="desbloquearLobo()">
+          
+<script>
+function desbloquearLobo() {
+    localStorage.setItem('loboDesbloqueado', 'true');
+    window.location.href = 'index-cerrado.html';
+}
+</script>
+          <img src="imagens/botao-home.webp" alt="Início" style="height: 48px;" />
+        </button>
+        <button class="popup-btn" onclick="window.location.href='fase2.html'">
+          <img src="imagens/botao-avancar.webp" alt="Próxima Fase" style="height: 48px;" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Áudios -->
+  <audio id="winSound" src="audios/ganhar.mp3" preload="auto"></audio>
+  <audio id="loseSound" src="audios/perder.mp3" preload="auto"></audio>
+  <audio id="bgMusic" src="audios/musica-fundo.mp3" preload="auto" loop></audio>
+  <audio id="fireSound" src="audios/fogo.mp3" preload="auto"></audio>
+
+  <script type="module" src="js/scriptLobo.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/style2.css">
+        <link rel="stylesheet" href="css/gif_bg.css">
+        <link rel="stylesheet" href="css/buttons.css">
+        <link rel="stylesheet" href="css/tooltip.css">
+        <link rel="stylesheet" href="css/bioma.css">
+        <link rel="stylesheet" href="css/preloader.css">
+
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+        <link rel="icon" href="imagens/favicon.png" type="image/png" />
+
+        <title>Extinção Zero</title>
+    </head>
+    <body>
+        <div id="biomaContainer">
+            <img id="mapaAmericaSul" src="imagens/america sul.png" alt="Mapa América do Sul">
+            <img id="mapaBiomas" src="imagens/biomas2.png" alt="Biomas do Brasil">
+        </div>
+
+        <div id="tooltip" class="tooltip"></div>
+
+        <canvas id="canvasThree"></canvas>
+        <canvas id="canvasColorDetect"></canvas>
+
+        <div id="biomaInfo" class="bioma-info hidden">
+            <div class="bioma-header">
+                <img id="biomaImage" src="" alt="Imagem do Bioma">
+            </div>
+            <div class="bioma-content">
+                <ul id="biomaTasks">
+                    <!-- Linhas de informação do bioma -->
+                </ul>
+            </div>
+        </div>
+
+
+        <header>
+            <h1>Biomas do Brasil</h1>
+        </header>
+
+        <button id="btn2" class="btn-top-right" type="button" aria-label="Botão no topo direita">Botão</button>
+
+        <div id="globoContainer"></div>
+
+        <img id="bgGifOceano" src="./gifs/oceano.gif" width="1920" height="1080"></img>
+
+        <div id="preloader2">
+            <div class="preloader-content">
+                <img src="imagens/logo.png" alt="Logo do Projeto" class="logo-preloader" />
+                <div class="spinner"></div>
+            </div>
+        </div>
+
+        <style>
+#botao-voltar {
+  position: fixed;
+  top: 30px;
+  left: 40px;
+  z-index: 10000;
+}
+#botao-voltar img {
+  width: 70px;
+  height: 70px;
+  image-rendering: pixelated;
+  cursor: pointer;
+}
+</style>
+<a href="Inicial.html" id="botao-voltar">
+  <img src="imagens/botao-voltar.webp" alt="Voltar" />
+</a>
+
+        <script type="module" src="js/main2.js"></script>
+    </body>
+</html>
