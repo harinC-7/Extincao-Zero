@@ -18,7 +18,6 @@ import {
 
 import { showPopupT } from './popup.js';
 
-// Elementos DOM do popup e UI
 const popupLose = document.getElementById("popupLose");
 const popupLoseContent = popupLose.querySelector('.popup-content');
 
@@ -32,7 +31,6 @@ const bgMusic = document.getElementById("bgMusic");
 
 const timeDisplay = document.getElementById("time");
 
-// Ajuste volume e autoplay da música de fundo
 moveSound.volume = 0.10;
 bgMusic.volume = 0.05;
 bgMusic.play().catch(() => {
@@ -41,11 +39,9 @@ bgMusic.play().catch(() => {
   }, { once: true });
 });
 
-// Define tamanho do canvas com proporção fixa
 canvas.height = window.innerHeight * 0.85;
 canvas.width = canvas.height * (4 / 3);
 
-// Controle do movimento da tartaruga com setas
 const keysPressed = {};
 let isMovingSoundPlaying = false;
 
@@ -90,7 +86,7 @@ function updateTurtlePosition() {
   requestAnimationFrame(updateTurtlePosition);
 }
 
-updateTurtlePosition(); // Inicia o loop
+updateTurtlePosition();
 
 
 
@@ -100,20 +96,16 @@ document.addEventListener("keyup", e => {
   }
 });
 
-
-// Pausa o jogo quando a aba perde foco
 document.addEventListener("visibilitychange", () => {
   gameState.paused = document.hidden;
 });
 
-// Variável para o timer do jogo
 let timerInterval;
 
-// Função para iniciar o timer do jogo
 timerInterval = setInterval(() => {
   if (gameState.gameOver) {
     clearInterval(timerInterval);
-    // Mostra o popup de perder, porque gameOver = true e vidas zeradas
+  
     endGame(false);
     return;
   }
@@ -124,19 +116,18 @@ timerInterval = setInterval(() => {
 
     if (gameState.timeLeft <= 0) {
       clearInterval(timerInterval);
-      // Quando o tempo acabar, o usuário ganhou
+    
       endGame(true);
     }
   }
 }, 1000);
 
-// Função para reiniciar o jogo, usa reset do módulo principal
 function resetGame() {
   resetGameModule();
 
-  gameState.timeLeft = 20;     // Reseta o tempo para 60 segundos
-  gameState.gameOver = false;  // Reativa o jogo
-  gameState.paused = false;    // Não pausado
+  gameState.timeLeft = 20;   
+  gameState.gameOver = false; 
+  gameState.paused = false;  
 
   turtle.x = canvas.width / 2 - turtle.size / 2;
   turtle.y = canvas.height / 2 - turtle.size / 2;
@@ -160,10 +151,9 @@ function startGame() {
   spawnHeart();
   spawnNet();
   gameLoop();
-  startTimer();  // Inicia o timer corretamente
+  startTimer();  
 }
 
-// Função que termina o jogo e mostra popup, com som e controle de reset
 function endGame(win) {
   gameState.gameOver = true;
 
@@ -177,11 +167,10 @@ function endGame(win) {
     winSound,
     loseSound,
     bgMusic,
-    startGame // Passa a função de restart
+    startGame 
   );
 }
 
-// Inicializa o jogo quando imagens estiverem carregadas
 Promise.all([
   sacolaImg.decode(),
   tartarugaImg.decode(),

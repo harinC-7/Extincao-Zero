@@ -65,7 +65,6 @@ export function setupBiomaPanel() {
       const btnEntrar = infoPanel.querySelector(".btn-entrar");
 btnEntrar.addEventListener("click", () => {
   if (bioma.url) {
-    // Cria sobreposição de transição
     const transitionOverlay = document.createElement("div");
     Object.assign(transitionOverlay.style, {
       position: "fixed",
@@ -81,17 +80,14 @@ btnEntrar.addEventListener("click", () => {
     });
     document.body.appendChild(transitionOverlay);
 
-    // Aplica animação de zoom out no body
     document.body.style.transition = "transform 0.8s ease-in-out, opacity 0.8s ease-in-out";
     document.body.style.transform = "scale(0.95)";
     document.body.style.opacity = "0";
 
-    // Mostra a tela preta
     setTimeout(() => {
       transitionOverlay.style.opacity = "1";
     }, 10);
 
-    // Redireciona após a animação
     setTimeout(() => {
       window.location.href = bioma.url;
     }, 800);

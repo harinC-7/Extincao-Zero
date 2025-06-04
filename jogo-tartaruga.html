@@ -66,7 +66,6 @@
 
     <audio id="collisionSound" src="audios/dano.mp3" preload="auto"></audio>
 
-  <!-- Áudio para pegar coração -->
   <audio id="heartSound" src="audios/ganhar-coração.mp3" preload="auto"></audio>
 
   <audio id="winSound" src="audios/ganhar.mp3" preload="auto"></audio>
@@ -79,7 +78,6 @@
   <img id="imgAguaViva" src="imagens/agua-viva.png" style="display:none;">
   <img id="imgRede" src="imagens/rede.png" style="display:none;">
 
-  <!-- Popup perder -->
   <div class="popup-overlay" id="popupLose">
     <div class="popup-content">
       <div class="popup-title">Você perdeu!</div>
@@ -89,14 +87,13 @@
         <button class="popup-btn recomecar" onclick="location.reload()">
           <img src="imagens/botao-recomecar.webp" alt="Reiniciar" style="height: 48px;" />
         </button>
-        <button class="popup-btn" onclick="window.location.href='index-mata-atlantica.html'">
+        <button class="popup-btn" onclick="window.location.href='mata-atlantica.html'">
           <img src="imagens/botao-home.webp" alt="Início" style="height: 48px;" />
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Popup ganhar -->
   <div class="popup-overlay" id="popupWin">
     <div class="popup-content popup-win-content">
       <div class="popup-title">Você venceu!</div>
@@ -111,7 +108,7 @@
 <script>
 function desbloquearTartaruga() {
     localStorage.setItem('tartarugaDesbloqueada', 'true');
-    window.location.href = 'index-mata-atlantica.html';
+    window.location.href = 'mata-atlantica.html';
 }
 </script>
           <img src="imagens/botao-home.webp" alt="Início" style="height: 48px;" />

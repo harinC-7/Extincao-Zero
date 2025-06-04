@@ -9,3 +9,4 @@ export function setupGifBackground() {
 
   gif.style.display = 'block';
 }
+

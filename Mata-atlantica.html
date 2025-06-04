@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+<link rel="icon" href="imagens/favicon.png" type="image/png" />
 <title>Extinção Zero</title>
   <link rel="stylesheet" href="css/pagAtlantica.css" />
 
@@ -11,7 +12,7 @@
 <body>
 <div class="fundo"></div>
 <div class="livro" id="livro">
-    <!-- Conteúdo gerado via JS -->
+  
 </div>
 
 <audio id="audioConquista" src="audios/conquista.mp3" preload="auto"></audio>
@@ -30,7 +31,7 @@
   cursor: pointer;
 }
 </style>
-<a href="Biomas.html" id="botao-voltar">
+<a href="biomas.html" id="botao-voltar">
   <img src="imagens/botao-voltar.webp" alt="Voltar" />
 </a>
 
@@ -46,7 +47,7 @@
                 <h2>Figurinhas desbloqueadas:</h2>
                 <div class="figurinhas">
                     <div class="figurinha"><img src="imagens/cadeado.png" alt="Cadeado"></div>
-                    <div class="figurinha"><img src="imagens/cadeado.png" alt="Cadeado"></div>
+                    <div class="figurinha"><img src="imagens/cadeado.png" alt="Cadeado1"></div>
                     <div class="figurinha"><img src="imagens/cadeado.png" alt="Cadeado"></div>
                     <div class="figurinha"><img src="imagens/cadeado.png" alt="Cadeado"></div>
                 </div>
@@ -84,15 +85,24 @@
         }
     ];
 
-    let paginaAtual = 0;
+   let paginaAtual = 0;
 
     function renderLivro() {
         livro.innerHTML = '';
-        livro.innerHTML += paginas[paginaAtual].esquerda;
+        let paginaEsquerda = paginas[paginaAtual].esquerda;
+
+if (paginaAtual === 0 && localStorage.getItem('figurinhaTartarugaColada') === 'true') {
+    paginaEsquerda = paginaEsquerda.replace(
+        /<img src="imagens\/cadeado.png" alt="Cadeado">/,
+        '<img src="imagens/tartaruga-de-couro.png" alt="Tartaruga-de-couro">'
+    );
+    
+}
+
+livro.innerHTML += paginaEsquerda;
         livro.innerHTML += `<div class="meio"></div>`;
         livro.innerHTML += paginas[paginaAtual].direita;
 
-        // seta esquerda
         if(paginaAtual > 0) {
             const setaEsq = document.createElement('div');
             setaEsq.classList.add('seta', 'esquerda');
@@ -125,7 +135,7 @@ renderLivro();
 
 if (localStorage.getItem('tartarugaDesbloqueada') === 'true') {
     mostrarPopupDesbloqueio();
-    localStorage.removeItem('tartarugaDesbloqueada'); // Limpa após mostrar
+    localStorage.removeItem('tartarugaDesbloqueada');
 }
 
 function mostrarPopupDesbloqueio() {
@@ -167,13 +177,12 @@ function colarFigurinha(botao) {
     if (primeira && primeira.src.includes('cadeado')) {
         primeira.src = 'imagens/tartaruga-de-couro.png';
         primeira.alt = 'Tartaruga-de-couro';
-        localStorage.setItem('figurinhaTartarugaColada', 'true'); // Salva como colada
+        localStorage.setItem('figurinhaTartarugaColada', 'true');
     }
 
     if (popup) popup.remove();
 }
 
-// Quando a página carrega, verifica se já colou a figurinha
 document.addEventListener('DOMContentLoaded', function () {
     if (localStorage.getItem('figurinhaTartarugaColada') === 'true') {
         const primeira = document.querySelector('.figurinha img');
@@ -189,11 +198,11 @@ document.addEventListener('click', function (e) {
     const img = e.target;
 
     if (img.tagName === 'IMG' && img.src.includes('tartaruga-de-couro.png')) {
-        mostrarCardLobo();
+        mostrarCardTartaruga();
     }
 });
 
-function mostrarCardLobo() {
+function mostrarCardTartaruga() {
     const overlay = document.createElement('div');
     overlay.style.position = 'fixed';
     overlay.style.top = '0';
@@ -207,7 +216,7 @@ function mostrarCardLobo() {
     overlay.style.zIndex = '9999';
 
     overlay.innerHTML = `
-        <img src="imagens/card-tartaruga.png" style="max-width: 90vw; max-height: 90vh;" />
+        <img src="imagens/card-tart-pixel.png" style="max-width: 90vw; max-height: 90vh;" />
     `;
 
     overlay.addEventListener('click', function (e) {

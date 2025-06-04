@@ -14,7 +14,7 @@ export const biomasData = {
     missoes: [
       "Lobo-guará",
       "Macaco-prego-do-peito-amarelo"
-    ], url: "Cerrado.html"
+    ], url: "cerrado.html"
     
   },
   "19,126,124": {
@@ -24,7 +24,7 @@ export const biomasData = {
       "Tartaruga-de-couro",
       "Mico-leão-dourado",
       "Caburé-de-pernambuco"
-    ], url: "Mata-atlantica.html"
+    ], url: "mata-atlantica.html"
   },
   "186,73,35": {
     nome: "Caatinga",

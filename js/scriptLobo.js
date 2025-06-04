@@ -59,7 +59,7 @@ const fires = [];
 const loboGuara = {
   x: canvas.width / 2,
   y: canvas.height / 2,
-  size: canvas.width * 0.10, // 5% da largura do canvas
+  size: canvas.width * 0.10,
   speed: 1.2,
   direction: { x: 1, y: 0 },
   changeDirectionInterval: 2000,
@@ -228,7 +228,7 @@ function endGame(win) {
 treeImg.onload = () => {
   positionFires();
   updateTimer();
-  draw(); // inicia o loop de animação contínua
+  draw();
 };
 
 function startGame() {
@@ -253,12 +253,12 @@ function startGame() {
 loboSound.volume = 0.1;
 
 function playLoboSoundPeriodically() {
-  const interval = 10000 + Math.random() * 10000; // entre 10 e 20 segundos
+  const interval = 10000 + Math.random() * 10000;
   setTimeout(() => {
     if (!gameOver) {
       loboSound.currentTime = 0;
-      loboSound.play().catch(() => {}); // evita erro caso esteja bloqueado
-      playLoboSoundPeriodically(); // agende o próximo
+      loboSound.play().catch(() => {});
+      playLoboSoundPeriodically(); 
     }
   }, interval);
 }

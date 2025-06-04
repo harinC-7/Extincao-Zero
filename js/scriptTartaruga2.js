@@ -23,7 +23,6 @@ const turtle = {
   speed: 8 * objScale
 };
 
-// Estado do jogo agrupado no objeto gameState
 const gameState = {
   lives: 3,
   timeLeft: 60,
@@ -43,7 +42,6 @@ const gameState = {
   trashSpeedMultiplier: 1
 };
 
-// --- Funções ---
 
 function createParticles(x, y, color = "white") {
   for (let i = 0; i < 10; i++) {
@@ -198,7 +196,7 @@ const collisionSound = document.getElementById("collisionSound");
 const heartSound = document.getElementById("heartSound");
 
 function applyDamage() {
-  collisionSound.currentTime = 0;  // reinicia o som para tocar do começo
+  collisionSound.currentTime = 0;
   collisionSound.play();
 
   const particleColor = gameState.hasShield ? "deepskyblue" : "white";
@@ -214,7 +212,7 @@ function applyDamage() {
 
     if (gameState.lives === 0) {
       gameState.gameOver = true;
-      // popup game over
+  
     } else {
       triggerInvulnerability();
     }
@@ -336,7 +334,6 @@ function resetGame() {
   gameLoop();
 }
 
-// Exportações para outros módulos
 export {
   turtle,
   canvas,

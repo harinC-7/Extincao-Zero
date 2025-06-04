@@ -28,7 +28,7 @@
   cursor: pointer;
 }
 </style>
-<a href="Biomas.html" id="botao-voltar">
+<a href="biomas.html" id="botao-voltar">
   <img src="imagens/botao-voltar.webp" alt="Voltar" />
 </a>
 
@@ -45,8 +45,6 @@
                 <div class="figurinhas">
                     <div class="figurinha"><img src="imagens/cadeado.png" alt="Lobo-guará"></div>
                     <div class="figurinha"><img src="imagens/cadeado.png" alt="Cadeado"></div>
-                    <div class="figurinha"><img src="imagens/cadeado.png" alt="Cadeado"></div>
-                    <div class="figurinha"><img src="imagens/cadeado.png" alt="Cadeado"></div>
                 </div>
             </div>`,
 
@@ -57,16 +55,6 @@
                 
                 <button class="botao-jogar">Jogar</button>
             </div>`
-        },
-        {
-            esquerda: `<div class="pagina"><h1> Salve o ???</h1>
-                <p>Em breve!</p>
-            
-                <button class="botao-jogar">Jogar</button></div>`,
-            direita: `<div class="pagina"><h1> Salve o ???</h1>
-                <p>Em breve!</p>
-            
-                <button class="botao-jogar">Jogar</button></div>`
         },
         {
             esquerda: `<div class="pagina"><h1> Salve o ???</h1>
@@ -85,11 +73,19 @@
 
     function renderLivro() {
         livro.innerHTML = '';
-        livro.innerHTML += paginas[paginaAtual].esquerda;
+        let paginaEsquerda = paginas[paginaAtual].esquerda;
+
+if (paginaAtual === 0 && localStorage.getItem('figurinhaLoboColada') === 'true') {
+    paginaEsquerda = paginaEsquerda.replace(
+        /<img src="imagens\/cadeado.png" alt="Lobo-guará">/,
+        '<img src="imagens/lobo-guara.png" alt="Lobo-guará">'
+    );
+}
+
+livro.innerHTML += paginaEsquerda;
         livro.innerHTML += `<div class="meio"></div>`;
         livro.innerHTML += paginas[paginaAtual].direita;
 
-        // seta esquerda
         if(paginaAtual > 0) {
             const setaEsq = document.createElement('div');
             setaEsq.classList.add('seta', 'esquerda');
@@ -99,7 +95,7 @@
             });
             livro.appendChild(setaEsq);
         }
-        // seta direita
+   
         if(paginaAtual < paginas.length - 1) {
             const setaDir = document.createElement('div');
             setaDir.classList.add('seta', 'direita');
@@ -122,7 +118,7 @@
 
     if (localStorage.getItem('loboDesbloqueado') === 'true') {
     mostrarPopupDesbloqueio();
-    localStorage.removeItem('loboDesbloqueado'); // Limpa após mostrar
+    localStorage.removeItem('loboDesbloqueado');
 }
 
 function mostrarPopupDesbloqueio() {
@@ -164,13 +160,12 @@ function colarFigurinha(botao) {
     if (primeira && primeira.src.includes('cadeado')) {
         primeira.src = 'imagens/lobo-guara.png';
         primeira.alt = 'Lobo-guará';
-        localStorage.setItem('figurinhaLoboColada', 'true'); // Salva como colada
+        localStorage.setItem('figurinhaLoboColada', 'true');
     }
 
     if (popup) popup.remove();
 }
 
-// Quando a página carrega, verifica se já colou a figurinha
 document.addEventListener('DOMContentLoaded', function () {
     if (localStorage.getItem('figurinhaLoboColada') === 'true') {
         const primeira = document.querySelector('.figurinha img');
@@ -204,7 +199,7 @@ function mostrarCardLobo() {
     overlay.style.zIndex = '9999';
 
     overlay.innerHTML = `
-        <img src="imagens/card-lobo.png" style="max-width: 90vw; max-height: 90vh;" />
+        <img src="imagens/card-lobo-pixel.png" style="max-width: 90vw; max-height: 90vh;" />
     `;
 
     overlay.addEventListener('click', function (e) {

@@ -19,8 +19,6 @@ export function showPopupL(win, messageElement, popupWin, popupLose, popupWinCon
 
 }
 
-// popup.js
-
 export function showPopupT(
   win,
   messageElement,
@@ -50,14 +48,12 @@ export function showPopupT(
     popupLoseContent.classList.add("show");
   }
 
-  // Configura os botões "Recomeçar"
   const restartButtons = document.querySelectorAll(".popup-btn.recomecar");
   restartButtons.forEach((btn) => {
-    // Remove listeners anteriores para evitar múltiplos acionamentos
+  
     btn.replaceWith(btn.cloneNode(true));
   });
 
-  // Re-obtem os botões clonados (sem listeners)
   const freshRestartButtons = document.querySelectorAll(".popup-btn.recomecar");
   freshRestartButtons.forEach((btn) => {
     btn.addEventListener("click", () => {

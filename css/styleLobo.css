@@ -79,7 +79,6 @@ canvas {
   }
 }
 
-/* Popup perder */
 .popup-content {
   background: url('../imagens/popup-perdeu.webp') no-repeat center center;
   background-size: contain;
@@ -95,7 +94,6 @@ canvas {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Popup ganhar (estilo diferente) */
 .popup-win-content {
   background: url('../imagens/popup-venceu.webp') no-repeat center center;
   background-size: contain;
@@ -124,7 +122,6 @@ canvas {
   font-size: 32px;
 }
 
-/* Popup perder */
 .popup-skull {
   position: absolute;
   top: 56px;
@@ -133,7 +130,6 @@ canvas {
   image-rendering: pixelated;
 }
 
-/* Popup ganhar */
 .popup-star {
   position: absolute;
   top: 56px;
@@ -142,7 +138,6 @@ canvas {
   image-rendering: pixelated;
 }
 
-/* Tartaruga (usada nos dois) */
 .popup-turtle {
   position: absolute;
   top: 212px;
@@ -155,7 +150,7 @@ canvas {
   margin-bottom: 75px;
   display: flex;
   margin-left: -10px;
-  gap: 40px; /* espaçamento entre botões */
+  gap: 40px;
 }
 
 .popup-btn {

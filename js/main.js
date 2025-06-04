@@ -8,9 +8,7 @@ let object, brasilMesh = null, highlightMesh = null;
 
 // Cena e fundo
 const scene = new THREE.Scene();
-const video = document.getElementById("bgVideoEspaço");
-const videoTexture = new THREE.VideoTexture(video);
-scene.background = videoTexture;
+scene.background = null;
 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ alpha: true });
@@ -135,21 +133,19 @@ window.addEventListener("click", (event) => {
     const y = Math.floor((1 - uv.y) * canvas.height);
     const pixel = ctx.getImageData(x, y, 1, 1).data;
     if (colorMatches(pixel[0], pixel[1], pixel[2])) {
-  audio.currentTime = 0; // Reinicia o som se já estiver tocando
+  audio.currentTime = 0;
   audio.play().then(() => {
-    // Espera ~500ms para deixar o som tocar antes de redirecionar
     setTimeout(() => {
       window.location.href = "biomas.html";
     }, 500); 
   }).catch((error) => {
     console.error("Erro ao tocar o som:", error);
-    window.location.href = "biomas.html"; // fallback
+    window.location.href = "biomas.html";
   });
 }
   }
 });
 
-// Hover
 window.addEventListener("mousemove", (event) => {
   if (!brasilMesh || !highlightMesh) return;
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;

@@ -2,26 +2,37 @@
   position: fixed;
   top: 20px;
   right: 20px;
-  padding: 10px 24px;
-  border: 2px solid white;
-  border-radius: 8px;
-  background-color: transparent;
-  color: white;
-  font-size: 1rem;
-  font-weight: 600;
-  font-family: 'Press Start 2P','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: none;
+  background: transparent;
+  padding: 0;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  user-select: none;
   z-index: 9999;
+  
+  display: inline-block;
+  position: fixed;
+  top: 20px;
+  right: 20px;
 }
 
-.btn-top-right:hover,
-.btn-top-right:focus {
-  background-color: white;
-  color: #222;
-  outline: none;
+.btn-top-right img {
+  width: 100px; /* ajuste o tamanho conforme necessário */
+  height: auto;
+  display: block;
 }
+
+.btn-top-right .btn-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 14px;
+  font-family: 'Press Start 2P','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  pointer-events: none; /* evita que o texto interfira no clique do botão */
+  text-shadow: 1px 1px 2px black; /* melhora a legibilidade sobre a imagem */
+}
+
+
 
 .btn-entrar {
   background-color: #2ecc71;

@@ -61,7 +61,6 @@
   <canvas id="canvas"></canvas>
   <div id="message"></div>
 
-  <!-- Popup perder -->
   <div class="popup-overlay" id="popupLose">
     <div class="popup-content">
       <div class="popup-title">Você perdeu!</div>
@@ -78,7 +77,6 @@
     </div>
   </div>
 
-  <!-- Popup ganhar -->
   <div class="popup-overlay" id="popupWin">
     <div class="popup-content popup-win-content">
       <div class="popup-title">Você venceu!</div>
@@ -93,7 +91,7 @@
 <script>
 function desbloquearLobo() {
     localStorage.setItem('loboDesbloqueado', 'true');
-    window.location.href = 'index-cerrado.html';
+    window.location.href = 'cerrado.html';
 }
 </script>
           <img src="imagens/botao-home.webp" alt="Início" style="height: 48px;" />
@@ -105,7 +103,6 @@ function desbloquearLobo() {
     </div>
   </div>
 
-  <!-- Áudios -->
   <audio id="winSound" src="audios/ganhar.mp3" preload="auto"></audio>
   <audio id="loseSound" src="audios/perder.mp3" preload="auto"></audio>
   <audio id="bgMusic" src="audios/musica-fundo.mp3" preload="auto" loop></audio>
