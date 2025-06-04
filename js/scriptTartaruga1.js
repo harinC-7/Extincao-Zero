@@ -125,7 +125,7 @@ timerInterval = setInterval(() => {
 function resetGame() {
   resetGameModule();
 
-  gameState.timeLeft = 20;   
+  gameState.timeLeft = 60;   
   gameState.gameOver = false; 
   gameState.paused = false;  
 

@@ -193,6 +193,7 @@ function detectCollision() {
 
 
 const collisionSound = document.getElementById("collisionSound");
+collisionSound.volume = 0.3;
 const heartSound = document.getElementById("heartSound");
 
 function applyDamage() {
